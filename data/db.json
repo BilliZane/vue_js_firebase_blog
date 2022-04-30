@@ -1,0 +1,52 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Lorem ipsum dolor, sit amet consectetur.",
+      "body": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta totam recusandae, commodi saepe laborum quae nostrum rem voluptate soluta obcaecati praesentium accusamus amet iusto repellendus veniam nihil sint temporibus dolorem. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta totam recusandae, commodi saepe laborum quae nostrum rem voluptate soluta obcaecati praesentium accusamus amet iusto repellendus veniam nihil sint temporibus dolorem.",
+      "tags": [
+        "coding",
+        "working",
+        "rest"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Lorem ipsum dolor, sit amet consectetur.",
+      "body": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta totam recusandae, commodi saepe laborum quae nostrum rem voluptate soluta obcaecati praesentium accusamus amet iusto repellendus veniam nihil sint temporibus dolorem. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta totam recusandae, commodi saepe laborum quae nostrum rem voluptate soluta obcaecati praesentium accusamus amet iusto repellendus veniam nihil sint temporibus dolorem.",
+      "tags": [
+        "coding",
+        "API",
+        "words"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Lorem ipsum dolor, sit amet consectetur.",
+      "body": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta totam recusandae, commodi saepe laborum quae nostrum rem voluptate soluta obcaecati praesentium accusamus amet iusto repellendus veniam nihil sint temporibus dolorem. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta totam recusandae, commodi saepe laborum quae nostrum rem voluptate soluta obcaecati praesentium accusamus amet iusto repellendus veniam nihil sint temporibus dolorem.",
+      "tags": [
+        "coding",
+        "API",
+        "words"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Lorem ipsum dolor, sit amet consectetur.",
+      "body": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta totam recusandae, commodi saepe laborum quae nostrum rem voluptate soluta obcaecati praesentium accusamus amet iusto repellendus veniam nihil sint temporibus dolorem. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta totam recusandae, commodi saepe laborum quae nostrum rem voluptate soluta obcaecati praesentium accusamus amet iusto repellendus veniam nihil sint temporibus dolorem.",
+      "tags": [
+        "coding",
+        "tasks"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Lorem ipsum dolor, sit amet consectetur.",
+      "body": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta totam recusandae, commodi saepe laborum quae nostrum rem voluptate soluta obcaecati praesentium accusamus amet iusto repellendus veniam nihil sint temporibus dolorem. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta totam recusandae, commodi saepe laborum quae nostrum rem voluptate soluta obcaecati praesentium accusamus amet iusto repellendus veniam nihil sint temporibus dolorem.",
+      "tags": [
+        "coding",
+        "tasks"
+      ]
+    }
+  ]
+}
