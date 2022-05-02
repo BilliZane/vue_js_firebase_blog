@@ -4,7 +4,12 @@
     <div class="home__error" v-if="error">{{ error }}</div>
     <div class="home__posts-wrap layout" v-if="posts.length">
       <TagCloud :posts="posts" />
-      <PostList :posts="posts" @delete-post="deletePost" />
+      <PostList
+        :posts="posts"
+        :showSnippet="true"
+        :showButtons="true"
+        @delete-post="deletePost"
+      />
     </div>
     <div class="home__loading" v-else>
       <Spinner />
@@ -13,6 +18,7 @@
 </template>
 
 <script>
+import {projectFirestore} from '@/firebase/config'
 import PostList from '@/components/PostList'
 import getPosts from '@/composables/getPosts'
 import Spinner from '@/components/Spinner'
@@ -32,11 +38,7 @@ export default {
         const target = posts.value.find((x) => x.id === id)
         posts.value.splice(posts.value.indexOf(target), 1)
         const deleteFromServer = async () => {
-          const url = 'http://localhost:3000/posts/' + id
-
-          await fetch(url, {
-            method: 'DELETE',
-          })
+          await projectFirestore.collection('posts').doc(id).delete()
         }
         deleteFromServer()
       }

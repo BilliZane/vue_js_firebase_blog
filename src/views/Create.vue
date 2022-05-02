@@ -8,7 +8,16 @@
       <label>Tags (hit enter to add a tag):</label>
       <input @keydown.enter.prevent="handleKeydown" v-model="tag" type="text" />
       <div class="tags">
-        <div v-for="tag in tags" :key="tag" class="pill">#{{ tag }}</div>
+        <div
+          title="Click to delete"
+          v-for="tag in tags"
+          :key="tag"
+          class="pill"
+          @click="deleteTag(tag)"
+        >
+          #{{ tag }}
+          <span v-if="closeBtn"> &#215; </span>
+        </div>
       </div>
       <button class="create__btn">Add Post</button>
     </form>
@@ -21,27 +30,37 @@
 <script>
 import {ref} from 'vue'
 import {useRouter} from 'vue-router'
+import {projectFirestore} from '@/firebase/config'
 import Spinner from '@/components/Spinner'
 export default {
   components: {Spinner},
   setup() {
     const router = useRouter()
-    console.log(router)
     const showSpinner = ref(false)
 
+    const closeBtn = true
     const title = ref('')
     const body = ref('')
     const tags = ref([])
     const tag = ref('')
+
     const handleKeydown = () => {
+      if (tag.value.length < 3) {
+        alert('Minimum 3 characters.')
+        return
+      }
       if (!tags.value.includes(tag.value)) {
         tag.value = tag.value.replace(/\s/g, '') // remove all whitespace
-        tags.value.push(tag.value)
+        tags.value.push(tag.value.toLowerCase())
       }
       tag.value = ''
     }
 
     const handleSubmit = () => {
+      if (!tags.value.length) {
+        alert('Please enter at least one tag.')
+        return
+      }
       const uploadPost = async () => {
         const post = {
           title: title.value,
@@ -49,13 +68,7 @@ export default {
           tags: tags.value,
         }
 
-        await fetch('http://localhost:3000/posts', {
-          method: 'POST',
-          body: JSON.stringify(post),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
+        await projectFirestore.collection('posts').add(post)
       }
       showSpinner.value = true
       uploadPost()
@@ -64,7 +77,12 @@ export default {
       }, 500)
     }
 
+    const deleteTag = (tag) => {
+      tags.value.splice(tags.value.indexOf(tag), 1)
+    }
+
     return {
+      closeBtn,
       showSpinner,
       body,
       title,
@@ -72,6 +90,7 @@ export default {
       tag,
       handleKeydown,
       handleSubmit,
+      deleteTag,
     }
   },
 }
@@ -151,6 +170,9 @@ button {
   border-radius: 3px;
   margin-right: 6px;
   transition: background 400ms;
+  &:hover {
+    cursor: pointer;
+  }
 }
 .tags {
   display: flex;

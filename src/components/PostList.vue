@@ -3,6 +3,8 @@
     <div v-for="post in posts" :key="post.id">
       <SinglePost
         :post="post"
+        :showSnippet="showSnippet"
+        :showButtons="showButtons"
         @delete-post="deletePost"
       />
     </div>
@@ -11,7 +13,7 @@
 <script>
 import SinglePost from '@/components/SinglePost'
 export default {
-  props: ['posts'],
+  props: ['posts', 'showSnippet', 'showButtons'],
   components: {SinglePost},
 
   setup(props, context) {

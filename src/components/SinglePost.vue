@@ -1,7 +1,7 @@
 <template>
   <div class="post">
-    <div class="post__title">{{ post.id }}. {{ post.title }}</div>
-    <div class="post__body">{{ snippet }}</div>
+    <div class="post__title">{{ post.title }}</div>
+    <div class="post__body">{{ showSnippet ? snippet : post.body }}</div>
     <div class="post__bottom">
       <div class="post__tags">
         <router-link
@@ -12,7 +12,7 @@
           >{{ tag }}</router-link
         >
       </div>
-      <div class="post__btn-wrap">
+      <div class="post__btn-wrap" v-if="showButtons">
         <router-link
           class="post__btn"
           :to="{name: 'Details', params: {id: post.id}}"
@@ -26,7 +26,7 @@
 <script>
 import {computed} from 'vue'
 export default {
-  props: ['post'],
+  props: ['post','showSnippet','showButtons'],
   emits: ['delete-post'],
   setup(props, context) {
     const snippet = computed(() => props.post.body.substring(0, 100) + '...')
